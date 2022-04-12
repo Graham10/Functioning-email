@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Working Email Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>Email Form</h3>
+            <input type="text" id="name" placeholder="Enter your Name" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="phone" placeholder="Enter your phone number" required>
+            <textarea name="message" id="message" rows="5" placeholder="How can we help you?"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        function sendEmail() {
+            Email.send({
+                SecureToken: "302c4c0e-68a2-48c3-be15-0226f0cf5a2f",
+                To: 'grahamkavulavu@gmail.com',
+                From: document.getElementById("email").value,
+                Subject: "Enquiry",
+                Body: "And this is the body"
+            }).then(
+                message => alert(message)
+            );
+        }
+    </script>
+</body>
+
+</html>
